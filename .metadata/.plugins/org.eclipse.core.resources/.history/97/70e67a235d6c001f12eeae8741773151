@@ -1,0 +1,38 @@
+from behave import given, when, then
+from appium import webdriver
+from time import sleep
+
+# Configurações globais
+desired_caps = {
+    "platformName": "Android",
+    "appPackage": "com.google.android.calculator",
+    "appActivity": "com.android.calculator2.Calculator",
+    "automationName": "UiAutomator2",  # Certifique-se de que o driver correto está especificado
+    "deviceName": "emulator-5554"
+}
+
+driver = None
+
+@given('que a calculadora está aberta')
+def step_given_calculator_open(context):
+    global driver
+    driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+    sleep(2)
+
+@when('eu digito o número {number}')
+def step_when_i_type_number(context, number):
+    driver.find_element_by_id(f"com.google.android.calculator:id/digit_{number}").click()
+
+@when('eu aperto o botão "+"')
+def step_when_i_press_plus(context):
+    driver.find_element_by_accessibility_id("plus").click()
+
+@when('eu aperto o botão "="')
+def step_when_i_press_equals(context):
+    driver.find_element_by_accessibility_id("equals").click()
+
+@then('o resultado deve ser {result}')
+def step_then_result_should_be(context, result):
+    actual_result = driver.find_element_by_id("com.google.android.calculator:id/result_final").text
+    assert actual_result == result, f"Esperava {result}, mas obteve {actual_result}"
+    driver.quit()

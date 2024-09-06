@@ -1,0 +1,32 @@
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+from time import sleep
+
+# Método para definir as capabilities
+desired_caps = {
+    "platformName": "Android",
+    "appPackage": "com.google.android.calculator",
+    "appActivity": "com.android.calculator2.Calculator",
+    "automationName": "UiAutomator2"
+}
+
+# Método para iniciar a sessão do Appium
+driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+
+# Método de pausa
+sleep(2)
+
+# Método para localizar e interagir com os elementos da calculadora
+driver.find_element(AppiumBy.ID, "com.google.android.calculator:id/digit_1").click()
+driver.find_element(AppiumBy.ID, "com.google.android.calculator:id/digit_0").click()
+driver.find_element(AppiumBy.ACCESSIBILITY_ID, "plus").click()
+driver.find_element(AppiumBy.ID, "com.google.android.calculator:id/digit_2").click()
+driver.find_element(AppiumBy.ID, "com.google.android.calculator:id/digit_0").click()
+driver.find_element(AppiumBy.ACCESSIBILITY_ID, "equals").click()
+
+# Método para validar o resultado
+result = driver.find_element(AppiumBy.ID, "com.google.android.calculator:id/result_final").text
+assert result == "30", f"Esperava 30, mas obteve {result}"
+
+# Método para fechar o aplicativo
+driver.quit()

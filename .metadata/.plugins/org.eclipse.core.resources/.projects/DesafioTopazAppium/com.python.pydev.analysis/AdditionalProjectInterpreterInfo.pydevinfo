@@ -1,0 +1,20 @@
+-- VERSION_5
+-- START DISKCACHE_3
+C:\Users\luana\OneDrive\Documentos\QUALITY ASSURANCE\DESAFIO TOPAZ\.metadata\.plugins\org.eclipse.core.resources\.projects\DesafioTopazAppium\com.python.pydev.analysis\v2_indexcache
+features.steps.__init__|1725405852566726800|C:\Users\luana\OneDrive\Documentos\QUALITY ASSURANCE\DESAFIO TOPAZ\DesafioTopazAppium\features\steps|^
+features.steps.calculadora_steps|1725641098772011500|C:\Users\luana\OneDrive\Documentos\QUALITY ASSURANCE\DESAFIO TOPAZ\DesafioTopazAppium\features\steps\calculadora_steps.py
+features.__init__|1725629403658329100|C:\Users\luana\OneDrive\Documentos\QUALITY ASSURANCE\DESAFIO TOPAZ\DesafioTopazAppium\features|^
+-- END DISKCACHE
+-- START DICTIONARY
+2
+2=features.steps.calculadora_steps
+1=C:\Users\luana\OneDrive\Documentos\QUALITY ASSURANCE\DESAFIO TOPAZ\DesafioTopazAppium\features\steps\calculadora_steps.py
+-- END DICTIONARY
+-- START TREE 1
+2
+dri|1|driver!1^5#1*19@
+ste|4|step_when_i_press_button!1^25#5*18@step_then_result_should_be!1^29#5*18@step_given_calculator_open!1^8#5*18@step_when_i_type_number!1^21#5*18@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

@@ -1,0 +1,27 @@
+@tag
+Feature: Testar a funcionalidade de soma da calculadora # features/calculadora.feature:2
+
+  @tag1
+  Scenario: Somar dois números          # features/calculadora.feature:5
+    Given que a calculadora está aberta # features/steps/calculadora_steps.py:16
+      Traceback (most recent call last):
+        File "C:\Users\luana\AppData\Local\Programs\Python\Python312\Lib\site-packages\behave\model.py", line 1329, in run
+          match.run(runner.context)
+        File "C:\Users\luana\AppData\Local\Programs\Python\Python312\Lib\site-packages\behave\matchers.py", line 98, in run
+          self.func(context, *args, **kwargs)
+        File "features\steps\calculadora_steps.py", line 19, in step_given_calculator_open
+          driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\luana\AppData\Local\Programs\Python\Python312\Lib\site-packages\appium\webdriver\webdriver.py", line 229, in __init__
+          super().__init__(
+        File "C:\Users\luana\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 192, in __init__
+          capabilities = options.to_capabilities()
+                         ^^^^^^^^^^^^^^^^^^^^^^^
+      AttributeError: 'NoneType' object has no attribute 'to_capabilities'
+
+    When eu digito o número 10          # None
+    And eu aperto o botão "+"           # None
+    And eu digito o número 20           # None
+    And eu aperto o botão "="           # None
+    Then o resultado deve ser 30        # None
+

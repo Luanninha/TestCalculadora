@@ -1,0 +1,9 @@
+[behave]
+# Diretório onde estão os arquivos de feature
+paths = features
+# Diretório onde estão os arquivos de steps
+steps = steps
+# Formato de saída dos relatórios
+format = pretty
+# Nível de log
+logging_level = INFO

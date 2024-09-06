@@ -1,0 +1,31 @@
+from behave import given, when, then
+from appium import webdriver
+from selenium.webdriver.common.by import By
+
+@given('que a calculadora está aberta')
+def step_open_calculator(context):
+    desired_caps = {
+        "platformName": "Android",
+        "deviceName": "emulator-5554",  # Altere para o nome do seu emulador/dispositivo
+        "appPackage": "com.android.calculator2",
+        "appActivity": "com.android.calculator2.Calculator"
+    }
+    context.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+@when('eu digito o número {num}')
+def step_input_number(context, num):
+    context.driver.find_element(By.XPATH, f"//android.widget.Button[@text='{num}']").click()
+
+@when('eu aperto o botão "{operator}"')
+def step_press_operator(context, operator):
+    context.driver.find_element(By.XPATH, f"//android.widget.Button[@text='{operator}']").click()
+
+@when('eu aperto o botão "="')
+def step_equals(context):
+    context.driver.find_element(By.XPATH, "//android.widget.Button[@text='=']").click()
+
+@then('o resultado deve ser {result}')
+def step_verify_result(context, result):
+    output = context.driver.find_element(By.XPATH, "//android.widget.TextView[@resource-id='com.android.calculator2:id/formula']").text
+    assert output == result, f"Esperado {result}, mas obteve {output}"
+    context.driver.quit()  # Fecha a sessão do Appium
